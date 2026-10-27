@@ -1,0 +1,63 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "low"
+model_context_window=1000000
+model_auto_compact_token_limit=900000
+plan_mode_reasoning_effort = "xhigh"
+
+web_search = "disabled"
+approvals_reviewer = "auto_review"
+service_tier = "default"
+
+[tui]
+# status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-used", "five-hour-limit", "weekly-limit"]
+status_line = ["model-with-reasoning", "approval-mode", "git-branch", "pull-request-number", "used-tokens", "context-window-size"]
+status_line_use_colors = true
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.linear.tools.save_issue]
+approval_mode = "approve"
+
+[mcp_servers.mastra]
+command = "pnpm"
+args = ["dlx", "@mastra/mcp-docs-server@latest"]
+
+[mcp_servers.mastra.tools.searchMastraDocs]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.getMastraHelp]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.mastraDocs]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.listMastraPackages]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.mastraMigration]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.getMastraExports]
+approval_mode = "approve"
+
+[mcp_servers.mastra.tools.getMastraExportDetails]
+approval_mode = "approve"
+
+[marketplaces.ponytail]
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "steer"
+conversationDetailMode = "STEPS_PROSE"
+ambient-suggestions-enabled = true
+
+[apps.asdk_app_6a314a73f8ac819195b0d55e36b9c609.tools."firecrawl.firecrawl_scrape"]
+approval_mode = "approve"
+
+[apps.asdk_app_6a314a73f8ac819195b0d55e36b9c609.tools."firecrawl.firecrawl_interact"]
+approval_mode = "approve"
